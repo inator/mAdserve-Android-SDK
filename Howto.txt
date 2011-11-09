@@ -1,0 +1,49 @@
+The instruction how to use the mAdserve SDK
+
+Requirements:
+    <uses-sdk android:minSdkVersion="3" />
+
+Steps:
+
+1) To add library madservesdk-1.0.jar to the project.
+2) To set the security permissions in your manifest file:
+
+  <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+
+If the current users location should be send with the ad request the following permission must be added:
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+  
+
+3) To add the mAdserve ad banner to your app create the view and add it to you layout. e.g:
+
+<com.madserve.sdk.AdServeView 
+	android:id="@+id/mAdserveView" 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	publisherId="<enter your publisher id here>"
+	serverUrl="<enter your server url>"
+	mode=”test/live”
+	includeLocation=”true/false”
+/>
+
+or dynamically:
+
+layout = (RelativeLayout) findViewById(R.id.mAdserveContent);
+AdserveView mAdserveView = new AdserveView(this, "f9205cd278ce092837a01cc4ca40af6a", "http://yourserver.com/request.php", false);
+layout.addView(mAdserveView);
+
+
+Parameters of the constructor are:
+1. the application context
+2. the publisher id
+3. the server url
+4. include the current users location to the ad request.
+
+
+
+
+
+	   	
